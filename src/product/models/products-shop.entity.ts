@@ -1,14 +1,17 @@
 import { AbstractEntity } from 'database/abstract.entity';
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 import { Product } from './product.entity';
-import { Factory } from 'nestjs-seeder';
+import { Address } from './address.entity';
 
 @Entity()
 export class ProductsShop extends AbstractEntity<ProductsShop> {
   @OneToMany(() => Product, (product) => product.shop)
   products: Product[];
 
-  @Factory((faker) => faker.commerce.productName())
   @Column()
   title: string;
+
+  @OneToOne(() => Address, { cascade: true })
+  @JoinColumn()
+  address: Address;
 }

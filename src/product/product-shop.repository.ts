@@ -12,9 +12,9 @@ export class ProductsShopRepository extends AbstractRepository<ProductsShop> {
 
   constructor(
     @InjectRepository(ProductsShop)
-    productsRepository: Repository<ProductsShop>,
+    productsShopRepository: Repository<ProductsShop>,
     entityManager: EntityManager,
   ) {
-    super(productsRepository, entityManager);
+    super(productsShopRepository, entityManager);
   }
 }

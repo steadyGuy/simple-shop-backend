@@ -25,4 +25,7 @@ export class Product extends AbstractEntity<Product> {
 
   @Column()
   price: number;
+
+  @Column()
+  quantity: number;
 }

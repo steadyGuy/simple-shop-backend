@@ -7,11 +7,15 @@ import { Product } from './product/models/product.entity';
 import { ProductsShop } from './product/models/products-shop.entity';
 import { Order } from './order/models/order.entity';
 
+import { Address } from './product/models/address.entity';
+import { ProductsShopRepository } from './product/product-shop.repository';
+import { ProductsRepository } from './product/product.repository';
+
 seeder({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
-    DatabaseModule.forFeature([Product, ProductsShop, Order]),
+    DatabaseModule.forFeature([Product, ProductsShop, Order, Address]),
   ],
-  providers: [],
+  providers: [ProductsShopRepository, ProductsRepository],
 }).run([ProductsShopSeeder]);
