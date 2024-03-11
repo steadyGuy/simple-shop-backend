@@ -1,12 +1,26 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class FindAllItemsQueryDto {
-  @ApiPropertyOptional({ name: 'filters' })
-  where?: { [key: string]: any };
   @ApiPropertyOptional()
-  sort?: { [key: string]: 'ASC' | 'DESC' };
-  @ApiPropertyOptional({ name: 'limit' })
+  where?: string;
+
+  @ApiPropertyOptional()
+  sort?: string;
+
+  @ApiPropertyOptional()
   take?: number;
+
   @ApiPropertyOptional()
   skip?: number;
+
+  @ApiPropertyOptional()
+  favouriteIds?: string;
+
+  @ApiPropertyOptional()
+  exceptFavouriteIds?: string;
+}
+
+export class FindItemsByIdsQueryDto {
+  @ApiPropertyOptional()
+  ids?: string;
 }

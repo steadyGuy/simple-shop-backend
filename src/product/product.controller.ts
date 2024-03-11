@@ -1,15 +1,16 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ProductsService } from './product.service';
-import { ProductsShopService } from './products-shop.service';
-import { FindAllItemsQueryDto } from './dto/find-all-items-query.dto';
-import { ApiQuery } from '@nestjs/swagger';
 
-@Controller('product')
+import {
+  FindAllItemsQueryDto,
+  FindItemsByIdsQueryDto,
+} from './dto/find-all-items-query.dto';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
+
+@ApiTags('products')
+@Controller('products')
 export class ProductController {
-  constructor(
-    private readonly productsService: ProductsService,
-    private readonly productsShopService: ProductsShopService,
-  ) {}
+  constructor(private readonly productsService: ProductsService) {}
 
   @Get()
   @ApiQuery({ type: FindAllItemsQueryDto })
@@ -17,8 +18,9 @@ export class ProductController {
     return this.productsService.findAll(queryParams);
   }
 
-  @Get('data')
-  findAllShops() {
-    return this.productsShopService.findAll();
+  @Get('ids')
+  @ApiQuery({ type: FindItemsByIdsQueryDto })
+  findByIds(@Query() queryParams: FindItemsByIdsQueryDto) {
+    return this.productsService.findByIds(queryParams);
   }
 }

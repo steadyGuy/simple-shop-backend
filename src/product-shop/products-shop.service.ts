@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-
 import { ProductsShopRepository } from './product-shop.repository';
 
 @Injectable()
@@ -13,5 +12,8 @@ export class ProductsShopService {
       relations: ['address'],
       order: { id: 'ASC' },
     });
+  }
+  async findById(id: number) {
+    return this.productsShopRepository.findOne({ id });
   }
 }
