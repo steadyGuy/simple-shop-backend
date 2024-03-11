@@ -19,4 +19,4 @@ Additionally, you can fill the database with some seeder data by running the fol
 Your app will be running at `http://localhost:3000/`
 Swagger documentation will be running at `http://localhost:3000/docs/`
 
-Production version of the app currently runs on `http://3.126.253.50 (aws ec2 instance)`
+Production version of the app currently runs on `http://54.93.92.48/ (aws ec2 instance)`
