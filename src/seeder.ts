@@ -11,12 +11,20 @@ import { Address } from './product-shop/models/address.entity';
 import { ProductsShopRepository } from './product-shop/product-shop.repository';
 import { ProductsRepository } from './product/product.repository';
 import { User } from './user/models/user.entity';
+import { OrderItem } from './order/models/order-item.entity';
 
 seeder({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
-    DatabaseModule.forFeature([Product, ProductsShop, Order, Address, User]),
+    DatabaseModule.forFeature([
+      Product,
+      ProductsShop,
+      OrderItem,
+      Order,
+      Address,
+      User,
+    ]),
   ],
   providers: [ProductsShopRepository, ProductsRepository],
 }).run([ProductsShopSeeder]);
